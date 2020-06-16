@@ -1,5 +1,7 @@
 package com.twschool.practice;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.Scanner;
 
 /**
@@ -10,12 +12,11 @@ public class Main {
 
     public static void main(String[] args) throws Exception {
         for (int time = 0; time < RUN_TIMES; time++) {
-            int[] input = new int[4];
-            int[] answer = {1, 2, 3, 4};
-            Scanner inputScanner = new Scanner(System.in);
-            for (int i = 0; i < 4; i++) {
-                input[i] = inputScanner.nextInt();
-            }
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+            String inputString = bufferedReader.readLine();
+            String[] input = inputString.split(" ");
+            String[] answer = Generation.getAnswer();
+
             System.out.println(Game.playGame(input, answer));
         }
     }
