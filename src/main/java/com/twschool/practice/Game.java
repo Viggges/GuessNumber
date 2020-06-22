@@ -2,8 +2,14 @@ package com.twschool.practice;
 
 public class Game {
 
+    RandomAnswerGeneration randomAnswerGeneration;
 
-    public static String playGame(String[] input, String[] answer) {
+    public Game(RandomAnswerGeneration randomAnswerGeneration) {
+        randomAnswerGeneration = randomAnswerGeneration;
+    }
+
+    public String playGame(String[] input) {
+        String[] answer = randomAnswerGeneration.getAnswer();
         int valueRight = 0;
         int allRight = 0;
         int inputIndex = 0;
