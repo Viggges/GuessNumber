@@ -11,25 +11,19 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        Game game;
-        RandomAnswerGeneration randomAnswerGeneration;
-        while (true) {
-            String[] answer = randomAnswerGeneration.getAnswer();
 
+        while (true) {
+            Game game = new Game(new RandomAnswerGeneration());
             for (int time = 0; time < RUN_TIMES; time++) {
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
                 String inputString = bufferedReader.readLine();
-                if ("lw".equals(inputString)) {
-                    System.out.println(answer[0] + answer[1] + answer[2] + answer[3]);
-                    break;
-                }
                 String[] input = inputString.split(" ");
-
-                if ("4A0B".equals(game.playGame(input, answer))) {
-                    System.out.println("就这？");
+                String result = game.playGame(input);
+                if ("4A0B".equals(result)) {
+                    System.out.println("胜利！");
                     break;
                 }
-                System.out.println(game.playGame(input, answer));
+                System.out.println(result);
             }
         }
     }
